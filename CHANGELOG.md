@@ -1,4 +1,4 @@
-# RCU-W — Changelog
+# RCU-Windows — Changelog
 
 ## 3.1.0 — 2026-10-08
 

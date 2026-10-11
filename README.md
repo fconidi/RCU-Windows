@@ -1,4 +1,4 @@
-# RCU-W — Rename Comics Universal for Windows 3.1.0
+# RCU-Windows — Rename Comics Universal for Windows 3.1.0
 
 [Italiano](#italiano) | [English](#english)
 
@@ -153,7 +153,7 @@ nome iniziale, nome proposto ed eventuale messaggio di errore.
 
 ## English
 
-RCU-W renames **PDF, CBR, CBZ and EPUB** comics using the series, issue number
+RCU-Windows renames **PDF, CBR, CBZ and EPUB** comics using the series, issue number
 and title in each filename. Names follow `Series 001 - Title.ext`.
 File contents and formats remain unchanged.
 
