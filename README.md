@@ -1,4 +1,4 @@
-# RCU-Windows — Rename Comics Universal for Windows 3.1.0
+# RCU-Windows — Rename Comics Universal for Windows 3.2.0
 
 [Italiano](#italiano) | [English](#english)
 
@@ -16,14 +16,14 @@ https://buymeacoffee.com/fconidi/e/485941
 ## Italiano
 
 
-RCU rinomina fumetti PDF, CBR, CBZ ed EPUB. La versione 3.1.0 offre una
+RCU rinomina fumetti PDF, CBR, CBZ ed EPUB. La versione 3.2.0 offre una
 GUI ridimensionabile con anteprima, selezione dei file, regole guidate e
 annullamento dell'ultima rinomina. GUI e console usano lo stesso motore.
 
 ### Avvio e utilizzo
 
 Scarica la distribuzione Windows dal link Buy Me a Coffee qui sopra. Se è uno ZIP,
-estrailo e apri **RCU-Win-3.1.0.exe** con doppio clic come utente normale.
+estrailo e apri **RCU-Win-3.2.0.exe** con doppio clic come utente normale.
 Nel pacchetto l'eseguibile può essere chiamato **RCU-Win.exe**.
 I moduli della GUI sono incorporati: non servono script esterni, Python o Go.
 All'avvio i componenti vengono estratti in una cartella temporanea e rimossi
@@ -41,7 +41,7 @@ sul rilevamento automatico. Anche l'editor e i messaggi del motore mostrati
 nella GUI seguono la lingua selezionata.
 Riferimento: [Get-UICulture di Microsoft](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-uiculture).
 
-1. Aprire **RCU-Win-3.1.0.exe** (oppure **RCU-Win.exe**, secondo il nome nel pacchetto).
+1. Aprire **RCU-Win-3.2.0.exe** (oppure **RCU-Win.exe**, secondo il nome nel pacchetto).
    Si può anche trascinare una cartella sul launcher o nella finestra dell'app.
 2. Scegliere la cartella. RCU propone la serie rilevata; se la cartella contiene
    serie diverse, lasciare vuota l'intestazione per conservare quella di ciascun file.
@@ -55,7 +55,16 @@ L'anteprima non cambia i file. Le righe già corrette o in conflitto sono esclus
 per i duplicati occorre scegliere una sola versione. Modificare un'opzione
 richiede una nuova anteprima. Si può esportare la tabella in CSV.
 L'elaborazione avviene in background; il numero dell'albo viene formattato con
-almeno tre cifre. Non vengono visitate le sottocartelle.
+almeno tre cifre.
+
+Le sottocartelle non vengono visitate, a meno che si attivi **Includi sottocartelle**
+(da console `-Recurse`). In quel caso ogni cartella è una raccolta a sé: la serie resta
+quella dei suoi file, ogni cartella ha il proprio registro di annullamento e l'anteprima
+mostra i nomi relativi alla cartella scelta. Una serie inserita a mano vale per tutte le
+cartelle e la serie rilevata automaticamente non viene proposta. Con l'opzione attiva
+**Annulla ultima rinomina** ripristina l'ultima operazione di ciascuna cartella inclusa.
+I collegamenti a cartelle non vengono seguiti. Con molte sottocartelle un percorso può
+superare il limite di 260 caratteri di Windows: i file interessati sono segnalati come errori.
 
 ### Come inserire i pattern
 
@@ -129,7 +138,7 @@ La lingua automatica segue Windows. Per sceglierla esplicitamente, apri
 PowerShell nella cartella dell'EXE:
 
 ```powershell
-.\RCU-Win-3.1.0.exe 'C:\Fumetti' -Language it
+.\RCU-Win-3.2.0.exe 'C:\Fumetti' -Language it
 ```
 
 Valori disponibili: `auto`, `en`, `it`, `es`, `de`, `fr`.
@@ -140,7 +149,7 @@ Se l'eseguibile nel pacchetto è chiamato `RCU-Win.exe`, usa quel nome nel coman
 | Problema | Cosa controllare |
 | --- | --- |
 | Il trascinamento non funziona | Avvia come utente normale oppure usa Sfoglia. |
-| Nessun fumetto trovato | Controlla la cartella e i formati: le sottocartelle non vengono visitate. |
+| Nessun fumetto trovato | Controlla la cartella e i formati: le sottocartelle sono visitate solo con «Includi sottocartelle». |
 | Serie assente o errata | Compila l'intestazione e aggiorna l'anteprima. |
 | Nomi proposti duplicati | Seleziona una sola versione per ciascun nome proposto. |
 | Le regole non compaiono nell'anteprima | Premi Usa e salva regole, poi Aggiorna anteprima. |
@@ -165,7 +174,7 @@ are not required. The executable embeds the GUI modules, extracts them
 temporarily and removes them when the app closes.
 
 1. Download the Windows package from the Buy Me a Coffee link above. Extract it if supplied as a ZIP.
-2. Double-click **RCU-Win-3.1.0.exe** as a regular user. The packaged executable may be named **RCU-Win.exe**.
+2. Double-click **RCU-Win-3.2.0.exe** as a regular user. The packaged executable may be named **RCU-Win.exe**.
 3. Browse for a comics folder or drag it into the window.
 4. Leave **Series / header** blank to retain each file's series, or enter a shared header. Enter a series for filenames beginning with an issue number.
 5. Configure **Remove recognized metadata**, optional **Title case**, and **Custom rules**.
@@ -173,7 +182,12 @@ temporarily and removes them when the app closes.
 7. Select the files, click **Rename selected** and confirm.
 8. To restore names, select the same folder and click **Undo last rename**.
 
-Subfolders are excluded. Refresh the preview after changing options or rules.
+Subfolders are excluded unless **Include subfolders** (`-Recurse` in the console) is on. Then every
+folder is its own collection, keeping the series of its own files, with its own undo journal; the
+preview shows names relative to the chosen folder, a typed series applies to all folders, the detected
+series is not proposed, and **Undo last rename** restores the last operation of each included folder.
+Folder links are not followed. Very long paths can exceed the Windows 260-character limit and are
+reported as errors. Refresh the preview after changing options or rules.
 For duplicate proposed names, select only one version. Already correct or
 conflicting entries are excluded. **Export preview** saves the table as CSV.
 Issue numbers use at least three digits; original title capitalization is
@@ -228,7 +242,7 @@ engine messages follow the selected language.
 To choose a language explicitly, open PowerShell beside the EXE:
 
 ```powershell
-.\RCU-Win-3.1.0.exe 'C:\Comics' -Language en
+.\RCU-Win-3.2.0.exe 'C:\Comics' -Language en
 ```
 
 Use the downloaded executable's actual filename. Accepted values:

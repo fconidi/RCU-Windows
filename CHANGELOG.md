@@ -1,5 +1,21 @@
 # RCU-Windows — Changelog
 
+## 3.2.0 — 2026-10-16
+
+### Italiano
+
+- Nuova opzione «Includi sottocartelle» nella GUI (salvata nelle preferenze, disattivata di default) e `-Recurse` da console: elabora la cartella scelta e tutto ciò che contiene.
+- Ogni cartella inclusa è una raccolta a sé: serie dei suoi file, registro di annullamento proprio, nessun duplicato fra cartelle diverse. L'annullamento ripristina l'ultima operazione di ciascuna cartella.
+- Anteprima ed esportazione CSV mostrano i nomi relativi alla cartella scelta; i collegamenti a cartelle non vengono seguiti.
+- Include le correzioni della 3.1.1: numeri dell'albo seguiti da virgola (`Serie 1, Titolo`) e regole che eliminano la coda da `Bonelli` in poi.
+
+### English
+
+- New "Include subfolders" option in the GUI (saved in preferences, off by default) and `-Recurse` in the console: process the chosen folder and everything below it.
+- Each included folder is its own collection: the series of its own files, its own undo journal, no duplicates across different folders. Undo restores the last operation of each folder.
+- Preview and CSV export show names relative to the chosen folder; folder links are not followed.
+- Includes the 3.1.1 fixes: issue numbers followed by a comma (`Series 1, Title`) and rules that remove everything from `Bonelli` onward.
+
 ## 3.1.0 — 2026-10-08
 
 ### Italiano
